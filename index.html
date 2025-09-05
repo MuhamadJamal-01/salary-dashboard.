@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worker Salary Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>💼 Worker Salary Dashboard</h1>
+
+    <!-- Input Form -->
+    <div class="card">
+      <h2>Add Employee</h2>
+      <div class="form-grid">
+        <input type="text" id="name" placeholder="Name">
+        <input type="number" id="workDays" placeholder="Work Days">
+        <input type="number" id="dailyRate" placeholder="Daily Rate">
+        <input type="number" id="overtime" placeholder="Overtime">
+        <input type="text" id="notes" placeholder="Notes">
+        <input type="date" id="date">
+        <button id="formBtn" onclick="submitForm()">➕ Add</button>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="🔎 Search by name..." onkeyup="searchTable()">
+      <button onclick="exportCSV()">⬇️ Export CSV</button>
+      <button onclick="exportPDF()">📑 Export PDF</button>
+    </div>
+
+    <!-- Table -->
+    <div class="card">
+      <table id="salaryTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Work Days</th>
+            <th>Daily Rate</th>
+            <th>Overtime</th>
+            <th>Total Salary</th>
+            <th>Notes</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Summary -->
+    <div id="summary" class="card">
+      <p><strong>Total Employees:</strong> <span id="totalEmployees">0</span></p>
+      <p><strong>Total Salary:</strong> $<span id="totalSalary">0</span></p>
+      <p><strong>Average Salary:</strong> $<span id="avgSalary">0</span></p>
+    </div>
+
+    <!-- Weekly Summary -->
+    <div id="weeklySummary" class="card">
+      <h2>📅 Weekly Summary</h2>
+      <div id="weeklyContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
